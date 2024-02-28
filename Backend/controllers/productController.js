@@ -4,7 +4,7 @@ class ProductController {
   async getAllProducts(_req, _res) {
     // Logic to retrieve all products data
     try {
-      const products = await Shoes.findOne();
+      const products = await Shoes.find();
       _res.status(200).json(products);
     } catch (err) {
       _res.status(500).json({ message: err.message });
