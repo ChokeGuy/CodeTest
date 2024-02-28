@@ -1,17 +1,15 @@
 const Shoes = require("../models/product");
 class ProductController {
-
   // Add your methods here
   async getAllProducts(_req, _res) {
     // Logic to retrieve all products data
     try {
-      const products = await Shoes.find();
+      const products = await Shoes.findOne();
       _res.status(200).json(products);
     } catch (err) {
       _res.status(500).json({ message: err.message });
     }
   }
-
 
   async getProductById(_req, _res) {
     try {
@@ -28,7 +26,6 @@ class ProductController {
       _res.status(500).json({ message: err.message });
     }
   }
-
 
   async createNewProduct(_req, _res) {
     try {
@@ -54,7 +51,6 @@ class ProductController {
       _res.status(500).json({ message: err.message });
     }
   }
-
 
   async updateAllProductsById(_req, _res) {
     try {
@@ -92,7 +88,6 @@ class ProductController {
       _res.status(500).json({ message: err.message });
     }
   }
-
 
   async deleteProductById(_req, _res) {
     try {
