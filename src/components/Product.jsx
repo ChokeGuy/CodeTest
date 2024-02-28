@@ -1,13 +1,21 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import Card from "./Card";
 import { CartContext } from "../store/store"; // Import the CartContext
 import { check } from "../assets/index";
-
-import jsonData from "../data/shoes.json"; // Import the jsonData object
+import { getAllProducts } from "../lib/fetchClient"; // Import the getAllProducts function
+// import jsonData from "../data/shoes.json"; // Import the jsonData object
 
 function Product() {
+  const [products, setProducts] = useState([]);
   const { cartItems, setCartItems } = useContext(CartContext);
 
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getAllProducts();
+      setProducts(data[0].shoes);
+    }
+    fetchData();
+  }, []);
   const handleAddToCart = (shoes) => {
     //Cast the Shoes type to CartItem type
     const newCartItems = {
@@ -30,9 +38,12 @@ function Product() {
 
   return (
     <Card title="our products">
-      <div className="col-span-full flex flex-col justify-start items-center gap-y-20">
-        {jsonData.shoes.length > 0 ? (
-          jsonData.shoes.map((shoes) => {
+      <div
+        className="col-span-full flex flex-col justify-start items-center gap-y-20
+      animate-fadeIn"
+      >
+        {products.length > 0 ? (
+          products.map((shoes) => {
             return (
               <div className="grid place-items-center" key={shoes.id}>
                 <div
@@ -40,7 +51,7 @@ function Product() {
                   style={{ backgroundColor: shoes.color }}
                 >
                   <img
-                    className="-rotate-30 size-72 md:-translate-x-5 ssm:translate-x-2 max-ssm:-translate-x-3"
+                    className="-rotate-30 size-72 sm:-translate-x-5 ssm:translate-x-2 max-ssm:-translate-x-3"
                     src={shoes.image}
                     alt="product-image"
                   />
@@ -83,7 +94,9 @@ function Product() {
             );
           })
         ) : (
-          <div>Your cart is empty</div>
+          <div className="text-left w-full animate-fadeIn">
+            Your product is empty
+          </div>
         )}
       </div>
     </Card>

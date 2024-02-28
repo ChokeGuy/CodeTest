@@ -4,8 +4,8 @@ import { nike } from "../assets/index";
 function Card({ title, cost, children }) {
   return (
     <div
-      className="py-3 px-5 bg-white rounded-4xl col-span-full sm:col-span-6 md:col-span-3 lg:col-span-3 xl:col-span-3
-       h-[60vh] max-sm:h-[75vh]
+      className="py-3 px-5 bg-white rounded-4xl col-span-full sm:col-span-5 md:col-span-3 lg:col-span-3 xl:col-span-3
+       h-[60vh] max-sm:h-[75vh] md:w-64 max-ssm:w-[340px] ssm:w-96
       overflow-hidden relative shadow-md"
     >
       <div className="absolute -top-1 -left-[18%] max-md:-left-[14%] bg-yellow size-40 rounded-[0%_0%_100%_24%] z-1"></div>

@@ -8,10 +8,10 @@ function App() {
       <div className="ssm:h-full sm:h-screen flex items-center justify-center container">
         <div className="grid gap-4 grid-flow-col place-content-center">
           <div className="w-full grid grid-cols-12 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12 max-md:gap-y-10 sm:gap-x-8">
-            <div className="sm:hidden md:block md:col-span-1 lg:col-span-2 xl:col-span-3"></div>
+            <div className="sm:col-span-1 lg:col-span-2 xl:col-span-3"></div>
             <Product />
             <Cart />
-            <div className="md:col-span-2 lg:col-span-2"></div>
+            <div className="md:col-span-2"></div>
           </div>
         </div>
       </div>
