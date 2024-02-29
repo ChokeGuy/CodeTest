@@ -40,7 +40,8 @@ class ProductController {
       ) {
         return _res.status(400).json({ message: "Invalid request" });
       }
-      newProduct.id = shoes.toJSON().shoes.length + 1;
+      const newestProductsIndex = shoes.toJSON().shoes.length - 1;
+      newProduct.id = shoes.toJSON().shoes[newestProductsIndex] + 1;
       //   Logic to create a new product
       await Shoes.updateOne(
         { _id: shoes._id },
